@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'localhost\SQLEXPRESS',
 	'username' => '',
 	'password' => '',
-	'database' => 'dmstest',
+	'database' => 'dummyDMS',
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -51,6 +51,15 @@ function isHighSchool()
 	if 
 }
 
+function isHeight()
+{
+	if height 255
+		(
+			display height is not 255 and up
+
+		)
+}
+
 function isNumber(evt) 
 {
     evt = (evt) ? evt : window.event;

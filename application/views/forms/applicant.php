@@ -294,10 +294,8 @@
             <section class="content">
                 <div class="row">
                     <!--row starts-->
-                    <div class="col-lg-6">
-                        <!--lg-6 starts-->
-                        <!--basic form starts-->
-                        <div class="panel panel-custom" id="hidepanel1" style="position:fixed; width: 40%">
+             <!--        <div class="col-md-6">
+                       <div class="panel panel-custom" style="position:fixed; width:40%"id="hidepanel1">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
                                     <i class="livicon" data-name="doc-portrait" data-c="#fff" data-hc="#fff" data-size="18" data-loop="true"></i>
@@ -305,8 +303,9 @@
                                 </h3>
                             </div>
                             <div class="panel-body">
-                                <form class="form-horizontal" action="#" method="post">
+                                <form class="form-horizontal" action="#" method="post" enctype="mulitpart/form-data">
                                     <fieldset>
+                                        <iframe src="<?php echo base_url(); ?>files/temp/IMG_1976.JPG#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" style="width:100%; height:400px;" frameborder="0"></iframe>
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="name">File Upload</label>
                                             <div class="col-md-9">
@@ -318,7 +317,7 @@
                                                     <span class="input-group-addon btn btn-default btn-file">
                                                         <span class="fileinput-new">Select file</span>
                                                         <span class="fileinput-exists">Change</span>
-                                                        <input type="file" name="..."></span>
+                                                        <input type="file" name="file" accept="image/jpg, image/jpeg, image/png, application/pdf"></span>
                                                     <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                                                 </div>
                                             </div>
@@ -326,10 +325,10 @@
                                     </fieldset>
                                 </form>
                             </div>
-                        </div>
-                    </div>
+                        </div> 
+                    </div> -->
                     <!--md-6 ends-->
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <!--md-6 starts-->
                         <!--form control starts-->
                         <div class="panel panel-success" id="hidepanel1">
@@ -340,8 +339,27 @@
                                 </h3>
                             </div>
                             <div class="panel-body">
-                                <form class="form-horizontal" action="#" id="appForm" name="appForm" method="post" autocomplete="off">
+                                <form class="form-horizontal" action="#" id="appForm" name="appForm" method="post" autocomplete="off" enctype="mulitpart/form-data">
                                     <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="name">File Upload</label>
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                    <div class="form-control" data-trigger="fileinput">
+                                                        <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                                        <span class="fileinput-filename"></span>
+                                                    </div>
+                                                    <span class="input-group-addon btn btn-default btn-file">
+                                                        <span class="fileinput-new" id="selectfile">Select file</span>
+                                                        <span class="fileinput-exists">Change</span>
+                                                        <input type="file" name="fle" id="SelectedFile" accept="image/*, application/pdf">
+                                                    </span>
+                                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" onclick="previewpdf()"); ">Preview</a>
+                                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                         <!-- Name input-->
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="firstname">First Name</label>
@@ -483,10 +501,17 @@
                                                 <textarea class="form-control" id="address" name="address" placeholder="House No./Street Number, Street Name, Subdivision/Village, Barangay, City/District" rows="2" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></textarea></div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" for="e1">Address  (State/<br>Municipality)</label>
+                                            <label class="col-md-3 control-label" for="e1">Address (State/<br>Municipality)</label>
                                             <div class="col-md-9">
                                                 <select id="addressState" class="col-md-2 form-control select2">
-                                                        <option value="">State/Municipality</option>
+                                                    <option value="">State/Municipality</option>
+                                                    <?php 
+                                                        $query = $this->db->query($sql_add);
+                                                        foreach ($query->result() as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_addStateID.">".$row->form_addStatedesc."</option>";
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -500,9 +525,9 @@
 											<div class="col-md-9">
 												<select id="gender" class="col-md-2 form-control select2">
                                                         <option value="">Gender</option>
-                                                        <option value="1">Not Known</option>
 														<option value="2">Male</option>
 														<option value="3">Female</option>
+                                                        <option value="1">Not Known</option>
 														<option value="9">Not Applicable</option>
                                                 </select>
 											</div>
@@ -666,7 +691,7 @@
                                             <label class="col-md-3 control-label" for="e1">Applicant Status</label>
                                             <div class="col-md-9">
                                                 <select id="appStatus" class="col-md-2 form-control select2">
-                                                    <optgroup label="Applicant Status">
+                                                        <option value=""><b>Applicant Status</b></option>
                                                         <option value="1">Accepted</option>
                                                         <option value="2">Pooling</option>
                                                         <option value="3">Failed</option>
@@ -674,7 +699,7 @@
                                                         <option value="5">Back Out</option>
                                                         <option value="6">No Show</option>
                                                         <option value="7">Black Listed</option>
-                                                    </optgroup>
+                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -722,6 +747,8 @@
     <script src="<?php echo base_url(); ?>res/vendors/jasny-bootstrap/js/jasny-bootstrap.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url(); ?>res/vendors/validation/dist/js/bootstrapValidator.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url(); ?>res/js/pages/validation.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url(); ?>res/js/pages/previewpdf.js" type="text/javascript" ></script>
+
 
     <!-- end of global js -->
 	

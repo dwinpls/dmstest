@@ -18,22 +18,15 @@ class Welcome extends CI_Controller {
 		
         if( $conn )
 		{
-           echo "<br /> Connection established.<br />";
+           echo "<br/> Connection established.<br/>";
         }
          else
 		{
            echo "Connection could not be established.<br />";
            die( print_r( sqlsrv_errors(), true));
         }
-		
-		$sql = "SELECT role_name AS 'Role Name' FROM tbl_role";
-//		$params = array(1, "some data");
-		
-		$stmt = sqlsrv_query( $conn, $sql);
-		if( $stmt === false )
-		{
-			die( print_r( sqlsrv_errors(), true));
-		}
+
+
 
 	}
 }
