@@ -23,6 +23,9 @@
 	<link href="<?php echo base_url(); ?>res/css/pages/form2.css"  rel="stylesheet"/>
     <link href="<?php echo base_url(); ?>res/css/pages/form3.css" rel="stylesheet"/>
     <link href="<?php echo base_url(); ?>res/vendors/validation/dist/css/bootstrapValidator.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url(); ?>res/vendors/modal/css/component.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>res/css/pages/toastr.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>res/vendors/toastr/toastr.css" rel="stylesheet" type="text/css" />
 
     <!-- end of global css -->
 </head>
@@ -233,8 +236,6 @@
                                 </li>
                             </ul>
                         </li>
-
-					    
                         <li>
                             <a href="#">
                                 <i class="livicon" data-name="search" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true" ></i>
@@ -294,39 +295,6 @@
             <section class="content">
                 <div class="row">
                     <!--row starts-->
-             <!--        <div class="col-md-6">
-                       <div class="panel panel-custom" style="position:fixed; width:40%"id="hidepanel1">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <i class="livicon" data-name="doc-portrait" data-c="#fff" data-hc="#fff" data-size="18" data-loop="true"></i>
-                                    Upload Physical Form
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                <form class="form-horizontal" action="#" method="post" enctype="mulitpart/form-data">
-                                    <fieldset>
-                                        <iframe src="<?php echo base_url(); ?>files/temp/IMG_1976.JPG#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" style="width:100%; height:400px;" frameborder="0"></iframe>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="name">File Upload</label>
-                                            <div class="col-md-9">
-                                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                                    <div class="form-control" data-trigger="fileinput">
-                                                        <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                                        <span class="fileinput-filename"></span>
-                                                    </div>
-                                                    <span class="input-group-addon btn btn-default btn-file">
-                                                        <span class="fileinput-new">Select file</span>
-                                                        <span class="fileinput-exists">Change</span>
-                                                        <input type="file" name="file" accept="image/jpg, image/jpeg, image/png, application/pdf"></span>
-                                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div> 
-                    </div> -->
                     <!--md-6 ends-->
                     <div class="col-md-8">
                         <!--md-6 starts-->
@@ -338,10 +306,10 @@
                                     Application Form
                                 </h3>
                             </div>
-                            <div class="panel-body">
-                                <form class="form-horizontal" action="#" id="appForm" name="appForm" method="post" autocomplete="off" enctype="mulitpart/form-data">
+                            <div class="panel-body"><!---->
+                                <form class="form-horizontal" onsubmit="return appValid(); return false;" id="appForm" name="appForm" method="post" autocomplete="off" enctype="mulitpart/form-data">
                                     <fieldset>
-                                        <div class="form-group">
+                                        <div class="form-group" id="fl" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="name">File Upload</label>
                                             <div class="col-md-9">
                                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -352,33 +320,33 @@
                                                     <span class="input-group-addon btn btn-default btn-file">
                                                         <span class="fileinput-new" id="selectfile">Select file</span>
                                                         <span class="fileinput-exists">Change</span>
-                                                        <input type="file" name="fle" id="SelectedFile" accept="image/*, application/pdf">
+                                                        <input type="file" name="fle" id="SelectedFile" accept="image/png,image/jpeg, application/pdf">
                                                     </span>
-                                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" onclick="previewpdf()"); ">Preview</a>
+                                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" onclick="previewpdf()");>Preview</a>
                                                     <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                                                 </div>
                                                 
                                             </div>
                                         </div>
                                         <!-- Name input-->
-                                        <div class="form-group">
+                                        <div class="form-group" id="fn" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="firstname">First Name</label>
                                             <div class="col-md-9">
                                                 <input id="firstname" name="firstname" type="text" placeholder="First Name" class="form-control" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();" ></div>
                                         </div>
                                         <!-- Email input-->
-                                        <div class="form-group">
+                                        <div class="form-group" id="mn" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="email">Middle Name</label>
                                             <div class="col-md-9">
                                                 <input id="middlename" name="middlename" type="text" placeholder="Middle Name" class="form-control" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();" ></div>
                                         </div>
                                         <!-- Message body -->
-                                        <div class="form-group">
+                                        <div class="form-group" id="ln" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="email">Last Name</label>
                                             <div class="col-md-9">
                                                 <input id="lastname" name="lastname" type="text" placeholder="Last Name" class="form-control" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="bd" onchange="this.className = 'form-group'">
 											<label class="col-md-3 control-label" for="e1">Birthday</label>
 											<div class="col-md-3">
 												<select id="b_month" class="col-md-2 form-control select2">
@@ -436,7 +404,6 @@
 											<div class="col-md-3">
 												<select id="b_year" class="col-md-9 form-control select2">
                                                         <option value="">Year</option>
-                                                        <option value="1955">1955</option>
                                                         <option value="1956">1956</option>
                                                         <option value="1957">1957</option>
                                                         <option value="1958">1958</option>
@@ -492,22 +459,22 @@
 														<option value="2008">2008</option>
 														<option value="2009">2009</option>
 														<option value="2010">2010</option>
+                                                        <option value="2011">2011</option>
                                                 </select>
 											</div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="ad" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="address">Address (Street)</label>
                                             <div class="col-md-9">
                                                 <textarea class="form-control" id="address" name="address" placeholder="House No./Street Number, Street Name, Subdivision/Village, Barangay, City/District" rows="2" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></textarea></div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="as" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="e1">Address (State/<br>Municipality)</label>
                                             <div class="col-md-9">
                                                 <select id="addressState" class="col-md-2 form-control select2">
-                                                    <option value="">State/Municipality</option>
+                                                    <option value=" ">State/Municipality</option>
                                                     <?php 
-                                                        $query = $this->db->query($sql_add);
-                                                        foreach ($query->result() as $row)
+                                                        foreach ($sql_add as $row)
                                                         {
                                                             echo "<option value=".$row->form_addStateID.">".$row->form_addStatedesc."</option>";
                                                         }
@@ -515,87 +482,116 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="cn" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="height">Contact Number</label>
                                             <div class="col-md-9">
-                                                <input id="contactno" name="contactno" type="text" pattern="[0-9]{3}" placeholder="Contact Number" class="form-control"  onkeypress="return isNumber(event)" maxlength="15"></div>
+                                                <input id="contactno" name="contactno" type="text" placeholder="Contact Number" class="form-control" minlength="5" maxlength="15"></div>
                                         </div> 
-                                        <div class="form-group">
+                                        <div class="form-group" id="gn" onchange="this.className = 'form-group'">
 											<label class="col-md-3 control-label" for="e1">Gender</label>
 											<div class="col-md-9">
 												<select id="gender" class="col-md-2 form-control select2">
-                                                        <option value="">Gender</option>
-														<option value="2">Male</option>
-														<option value="3">Female</option>
-                                                        <option value="1">Not Known</option>
-														<option value="9">Not Applicable</option>
+                                                        <option value=" ">Gender</option>
+                                                        <?php 
+                                                        foreach ($sql_gen as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_genderID.">".$row->form_genderdesc."</option>";
+                                                        }
+                                                        ?>
                                                 </select>
 											</div>
 										</div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="cs" onchange="this.className = 'form-group'">
 											<label class="col-md-3 control-label" for="e1">Civil Status</label>
 											<div class="col-md-9">
 												<select id="civilstatus" class="col-md-2 form-control select2">
-                                                        <option value="">Civil Status</option>
+                                                        <option value=" ">Civil Status</option>
+                                                        <?php 
+                                                        foreach ($sql_cvs as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_civilID.">".$row->form_civildesc."</option>";
+                                                        }
+                                                        ?>
                                                 </select>
 											</div>
 										</div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="rl" onchange="this.className = 'form-group'">
 											<label class="col-md-3 control-label" for="e1">Religion</label>
 											<div class="col-md-9">
 												<select id="religion" class="col-md-2 form-control select2">
-                                                        <option value="">Religion</option>
+                                                        <option value=" ">Religion</option>
+                                                        <?php 
+                                                        foreach ($sql_rel as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_religionID.">".$row->form_religionDesc."</option>";
+                                                        }
+                                                        ?>
                                                 </select>
 											</div>
 										</div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="height">Height</label>
+                                        <div class="form-group" id="ht" onkeypress="this.className = 'form-group'">
+                                            <label class="col-md-3 control-label" for="height">Height (cm)</label>
                                             <div class="col-md-9">
-                                                <input id="height" name="height" type="text" pattern="+[0-9]" placeholder="Height (in centimeters)" class="form-control"  onkeypress="return isNumber(event)" maxlength="3" ></div>
+                                                <input id="height" name="height" type="text" placeholder="Height (in centimeters)" class="form-control" ></div>
                                         </div> 											
-                                        <div class="form-group">
+                                        <div class="form-group" id="ca" onchange="this.className = 'form-group'">
 											<label class="col-md-3 control-label" for="e1">Clients Assigned</label>
 											<div class="col-md-9">
 												<select id="clientsAssigned" class="col-md-2 form-control select2">
-                                                        <option value="">Clients Assigned</option>
+                                                       <option value=" ">Clients Assigned</option> 
+                                                        <?php 
+                                                        foreach ($sql_cla as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_clientAssignedID.">".$row->form_clientAssigneddesc."</option>";
+                                                        }
+                                                        ?>
                                                 </select>
 											</div>
 										</div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="ex" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="e1">Exam Status</label>
                                             <div class="col-md-9">
                                                 <select id="examStatus" class="col-md-2 form-control select2">
-                                                        <option value="">Exam Status</option>
-                                                        <option value="1">Passed</option>
-                                                        <option value="2">Failed</option>
-                                                        <option value="3">Incomplete</option>
+                                                        <option value=" ">Exam Status</option>
+                                                        <?php 
+                                                        foreach ($sql_est as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_examStatusID.">".$row->form_examStatusdesc."</option>";
+                                                        }
+                                                        ?>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="ed" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="e1">Educational Attainment</label>
                                             <div class="col-md-9">
                                                 <select id="educAttain" class="col-md-2 form-control select2">
-                                                        <option value="">Educational Attainment</option>
+                                                        <option value=" ">Educational Attainment</option>
+                                                        <?php 
+                                                        foreach ($sql_eda as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_educationAttainID.">".$row->form_educationAttaindesc."</option>";
+                                                        }
+                                                        ?>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="co" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="course">Course</label>
                                             <div class="col-md-9">
                                                 <input id="course" name="course" type="text" placeholder="Course" class="form-control" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="we" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="workexp">Work Experience</label>
                                             <div class="col-md-9">
                                                 <textarea class="form-control" id="workexp" name="message" placeholder="Work Experience" rows="3" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></textarea></div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="sk" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="skills">Skills</label>
                                             <div class="col-md-9">
                                                 <textarea class="form-control" id="skills" name="message" placeholder="Skills" rows="2" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"  ></textarea></div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="da" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="e1">Date Applied</label>
                                             <div class="col-md-3">
                                                 <select id="da_month" class="col-md-2 form-control select2">
@@ -677,7 +673,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="pl" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="e1">Pleasing Personality</label>
                                             <div class="col-md-9">
                                                 <select id="pleasing" class="col-md-2 form-control select2">
@@ -687,43 +683,66 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="ast" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="e1">Applicant Status</label>
                                             <div class="col-md-9">
                                                 <select id="appStatus" class="col-md-2 form-control select2">
-                                                        <option value=""><b>Applicant Status</b></option>
-                                                        <option value="1">Accepted</option>
-                                                        <option value="2">Pooling</option>
-                                                        <option value="3">Failed</option>
-                                                        <option value="4">Not Qualified</option>
-                                                        <option value="5">Back Out</option>
-                                                        <option value="6">No Show</option>
-                                                        <option value="7">Black Listed</option>
-                                                    
+                                                        <option value="">Applicant Status</option>
+                                                        <?php 
+                                                        foreach ($sql_aps as $row)
+                                                        {
+                                                            echo "<option value=".$row->form_applicantStatusID.">".$row->form_applicantStatusdesc."</option>";
+                                                        }
+                                                        ?>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="it" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="interview">Interview Remarks</label>
                                             <div class="col-md-9">
-                                                <textarea class="form-control" id="interview" name="message" placeholder="Interview Remarks" rows="3" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"  ></textarea></div>
+                                                <textarea class="form-control" id="interview" name="message" placeholder="Interview Remarks" rows="3" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></textarea>
+                                            </div>
                                         </div>
-										
-										
-                                        <!-- Form actions -->
                                         <div class="form-group">
                                             <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-responsive btn-primary btn-sm" id="submit" onclick="">Submit</button>
+                                                <button type="submit" class="btn btn-responsive btn-primary btn-sm" data-modal="modal-19" id="submit" name="submit" value="Submit">Submit</button>
                                             </div>
                                         </div>
                                     </fieldset>
+                <div class="md-modal md-effect-1" id="modal-19">
+                    <div class="md-content md-content-white">
+                        <h3>Confirmation</h3>
+                        <div>
+                            <p>
+                                This is a modal window. You can do the following things with it:
+                            </p>
+                            <ul>
+                                <li>
+                                    <strong>Read:</strong>
+                                    modal windows will probably tell you something important so don't forget to read what they say.
+                                </li>
+                                <li>
+                                    <strong>Look:</strong>
+                                    a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.
+                                </li>
+                                <li>
+                                    <strong>Close:</strong>
+                                    click on the button below to close the modal.
+                                </li>
+                            </ul>
+                            <td>
+                            <button class="btn btn-modal btn-default" onclick="closeMod()" id="cancel">Cancel</button>
+
+                            <button class="btn btn-modal btn-primary" onclick="conMod()" id="confirm">Confirm</button></td>
+                        </div>
+                    </div>
+                </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
 			</section>
-
         </aside>
         <!-- right-side -->
     </div>
@@ -731,6 +750,7 @@
         <i class="livicon" data-name="plane-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
     </a>
     <script src="<?php echo base_url(); ?>res/js/appform.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>res/js/pages/previewpdf.js" type="text/javascript" ></script>
     <!-- global js -->
     <script src="<?php echo base_url(); ?>res/js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>res/js/bootstrap.min.js" type="text/javascript"></script>
@@ -741,16 +761,13 @@
     <script src="<?php echo base_url(); ?>res/js/metisMenu.js" type="text/javascript"> </script>
     <script src="<?php echo base_url(); ?>res/vendors/holder-master/holder.js" type="text/javascript"></script>
 	<!--datetime picker-->
-    <script src="<?php echo base_url(); ?>res/vendors/datetimepicker/js/bootstrap-datetimepicker.js"  type="text/javascript" charset="UTF-8"></script>
-    <script src="<?php echo base_url(); ?>res/vendors/datetimepicker/js/locales/bootstrap-datetimepicker.fr.js"  type="text/javascript" charset="UTF-8"></script>
-	<script src="<?php echo base_url(); ?>res/js/pages/pickers.js"></script>
     <script src="<?php echo base_url(); ?>res/vendors/jasny-bootstrap/js/jasny-bootstrap.min.js" type="text/javascript" ></script>
     <script src="<?php echo base_url(); ?>res/vendors/validation/dist/js/bootstrapValidator.min.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url(); ?>res/vendors/toastr/toastr.min.js"></script>
+    <script src="<?php echo base_url(); ?>res/vendors/toastr/ui-toastr.js"></script>
     <script src="<?php echo base_url(); ?>res/js/pages/validation.js" type="text/javascript" ></script>
-    <script src="<?php echo base_url(); ?>res/js/pages/previewpdf.js" type="text/javascript" ></script>
-
-
+    <script src="<?php echo base_url(); ?>res/vendors/modal/js/classie.js"></script>
+    <script src="<?php echo base_url(); ?>res/vendors/modal/js/modalEffects.js"></script>
     <!-- end of global js -->
-	
 </body>
 </html>

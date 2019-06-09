@@ -18,12 +18,12 @@ class Welcome extends CI_Controller {
 		
         if( $conn )
 		{
-           echo "<br/> Connection established.<br/>";
+           
         }
          else
 		{
-           echo "Connection could not be established.<br />";
-           die( print_r( sqlsrv_errors(), true));
+         //  echo "Connection could not be established.<br />";
+         //  die( print_r( sqlsrv_errors(), true));
         }
 
 
