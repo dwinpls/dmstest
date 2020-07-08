@@ -14,11 +14,11 @@ Links
 Installation
 *******************
 1. Install XAMPP, SQL Server 2012 and ODBC Driver for SQL Server.
-2. Download the appopriate PHP Driver for SQL Server based on: PHP version, system archritecture and Thread Safety through localhost/dashboard/phpinfo.php
+2. Download the appopriate PHP Driver for SQL Server based on: PHP version, system archritecture and Thread Safety through ``localhost/dashboard/phpinfo.php``
 3. Get the ``php_sqlsrv.dll`` and ``php_pdo_sqlsrv.dll`` and paste it to ``C:\xampp\php\ext``
 4. Config your ``C:\xampp\php\php.ini`` and add the DLL extension to "Dynamic Extensions".
 
-| Example:
+| **Example:**
 | extension=*file_name_of_dll*
 | extension=php_sqlsrv
 | extension=php_pdo_sqlsrv
