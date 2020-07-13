@@ -8,7 +8,7 @@ Links
 - XAMPP - https://www.apachefriends.org/download.html
 - SQL Server 2012 - https://www.microsoft.com/en-us/download/details.aspx?id=29062
 - ODBC Driver for SQL Server - https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server
-- PHP Driver for SQL Server - https://github.com/Microsoft/msphpsql/releases
+- PHP Driver for SQL Server - https://docs.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server or https://github.com/Microsoft/msphpsql/releases
 
 *******************
 Installation
@@ -25,6 +25,9 @@ Installation
 | extension=*file_name_of_dll*
 | extension=php_sqlsrv
 | extension=php_pdo_sqlsrv
+| or 
+| extension=php_pdo_sqlsrv_74_ts_x64
+| extension=php_sqlsrv_74_ts_x64
 | 
 | If it doesn't work (PDO doesn't show up) try:
 | extension=php_sqlsrv.dll
