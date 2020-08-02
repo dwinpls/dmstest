@@ -1,6 +1,6 @@
 /*!
  * Jasny Bootstrap v3.1.3 (http://jasny.github.io/bootstrap)
- * Copyright 2012-2014 Arnold Daniels
+ * Copyright 2012-2015 Arnold Daniels
  * Licensed under Apache-2.0 (https://github.com/jasny/bootstrap/blob/master/LICENSE)
  */
 
@@ -59,6 +59,11 @@
   right: -5px;
   left: auto;
   border-radius: 0 2px 2px 0;
+}
+.btn-group > .btn:last-child:not(:first-child) .btn-label,
+.btn-group > .dropdown-toggle:not(:first-child) .btn-label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .nav-tabs-bottom {
   border-top: 1px solid #ddd;
@@ -151,7 +156,7 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  z-index: 1030;
+  z-index: 1050;
   overflow-y: auto;
   border-radius: 0;
 }
@@ -220,7 +225,7 @@
 .navmenu-default,
 .navbar-default .navbar-offcanvas {
   background-color: #f8f8f8;
-  border-color: #A9B6BC;
+  border-color: #e7e7e7;
 }
 .navmenu-default .navmenu-brand,
 .navbar-default .navbar-offcanvas .navmenu-brand {
@@ -251,7 +256,7 @@
 .navmenu-default .navmenu-nav > .open > a:focus,
 .navbar-default .navbar-offcanvas .navmenu-nav > .open > a:focus {
   color: #555;
-  background-color: #A9B6BC;
+  background-color: #e7e7e7;
 }
 .navmenu-default .navmenu-nav > .open > a .caret,
 .navbar-default .navbar-offcanvas .navmenu-nav > .open > a .caret,
@@ -269,7 +274,7 @@
 }
 .navmenu-default .navmenu-nav.dropdown-menu,
 .navbar-default .navbar-offcanvas .navmenu-nav.dropdown-menu {
-  background-color: #A9B6BC;
+  background-color: #e7e7e7;
 }
 .navmenu-default .navmenu-nav.dropdown-menu > .divider,
 .navbar-default .navbar-offcanvas .navmenu-nav.dropdown-menu > .divider {
@@ -301,7 +306,7 @@
 .navmenu-default .navmenu-nav > .active > a:focus,
 .navbar-default .navbar-offcanvas .navmenu-nav > .active > a:focus {
   color: #555;
-  background-color: #A9B6BC;
+  background-color: #e7e7e7;
 }
 .navmenu-default .navmenu-nav > .disabled > a,
 .navbar-default .navbar-offcanvas .navmenu-nav > .disabled > a,
