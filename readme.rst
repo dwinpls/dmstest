@@ -27,11 +27,11 @@ Installation
 | ``extension=php_pdo_sqlsrv``
 | or 
 | ``extension=php_pdo_sqlsrv_74_ts_x64``
-| `` extension=php_sqlsrv_74_ts_x64``
+| ``extension=php_sqlsrv_74_ts_x64``
 | 
 | If it doesn't work (PDO doesn't show up) try:
 | ``extension=php_sqlsrv.dll``
-| `` extension=php_pdo_sqlsrv.dll``
+| ``extension=php_pdo_sqlsrv.dll``
 
 *******************
 Troubleshoot
