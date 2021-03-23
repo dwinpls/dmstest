@@ -78,7 +78,7 @@
                                         <small>An hour ago</small>
                                     </div>
                                 </a>
-                            </li>
+<!--                            </li>-->
                             <li class="unread message">
                                 <a href="javascript:;" class="message">
                                     <i class="pull-right" data-toggle="tooltip" data-placement="top" title="Mark as Read">

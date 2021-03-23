@@ -307,7 +307,7 @@
                                 </h3>
                             </div>
                             <div class="panel-body"><!---->
-                                <form class="form-horizontal" onsubmit="return appValid(); return false;" id="appForm" name="appForm" method="post" autocomplete="off" enctype="mulitpart/form-data">
+                                <form class="form-horizontal" id="appForm" name="appForm" method="post" autocomplete="off" enctype="mulitpart/form-data">
                                     <fieldset>
                                         <div class="form-group" id="fl" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="name">File Upload</label>
@@ -322,7 +322,6 @@
                                                         <span class="fileinput-exists">Change</span>
                                                         <input type="file" name="fle" id="SelectedFile" accept="image/png,image/jpeg, application/pdf">
                                                     </span>
-                                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" onclick="previewpdf()");>Preview</a>
                                                     <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                                                 </div>
                                                 
@@ -332,19 +331,19 @@
                                         <div class="form-group" id="fn" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="firstname">First Name</label>
                                             <div class="col-md-9">
-                                                <input id="firstname" name="firstname" type="text" placeholder="First Name" class="form-control" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();" ></div>
+                                                <input id="firstname" name="firstname" type="text" placeholder="First Name" class="form-control" style="text-transform:uppercase;"></div>
                                         </div>
                                         <!-- Email input-->
                                         <div class="form-group" id="mn" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="email">Middle Name</label>
                                             <div class="col-md-9">
-                                                <input id="middlename" name="middlename" type="text" placeholder="Middle Name" class="form-control" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();" ></div>
+                                                <input id="middlename" name="middlename" type="text" placeholder="Middle Name" class="form-control" style="text-transform:uppercase;" ></div>
                                         </div>
                                         <!-- Message body -->
                                         <div class="form-group" id="ln" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="email">Last Name</label>
                                             <div class="col-md-9">
-                                                <input id="lastname" name="lastname" type="text" placeholder="Last Name" class="form-control" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></div>
+                                                <input id="lastname" name="lastname" type="text" placeholder="Last Name" class="form-control" style="text-transform:uppercase;"></div>
                                         </div>
                                         <div class="form-group" id="bd" onchange="this.className = 'form-group'">
 											<label class="col-md-3 control-label" for="e1">Birthday</label>
@@ -466,7 +465,7 @@
                                         <div class="form-group" id="ad" onkeypress="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="address">Address (Street)</label>
                                             <div class="col-md-9">
-                                                <textarea class="form-control" id="address" name="address" placeholder="House No./Street Number, Street Name, Subdivision/Village, Barangay, City/District" rows="2" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"></textarea></div>
+                                                <textarea class="form-control" id="address" name="address" placeholder="House No./Street Number, Street Name, Subdivision/Village, Barangay, City/District" rows="2" style="text-transform:uppercase;" ></textarea></div>
                                         </div>
                                         <div class="form-group" id="as" onchange="this.className = 'form-group'">
                                             <label class="col-md-3 control-label" for="e1">Address (State/<br>Municipality)</label>
@@ -705,39 +704,34 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-responsive btn-primary btn-sm" data-modal="modal-19" id="submit" name="submit" value="Submit">Submit</button>
+												<button type="button" class="btn btn-raised btn-primary " data-toggle="" data-target="" id="submit" name="submit" value="submit">Submit</button>
                                             </div>
                                         </div>
                                     </fieldset>
-                <div class="md-modal md-effect-1" id="modal-19">
-                    <div class="md-content md-content-white">
-                        <h3>Confirmation</h3>
-                        <div>
-                            <p>
-                                This is a modal window. You can do the following things with it:
-                            </p>
-                            <ul>
-                                <li>
-                                    <strong>Read:</strong>
-                                    modal windows will probably tell you something important so don't forget to read what they say.
-                                </li>
-                                <li>
-                                    <strong>Look:</strong>
-                                    a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.
-                                </li>
-                                <li>
-                                    <strong>Close:</strong>
-                                    click on the button below to close the modal.
-                                </li>
-                            </ul>
-                            <td>
-                            <button class="btn btn-modal btn-default" onclick="closeMod()" id="cancel">Cancel</button>
-
-                            <button class="btn btn-modal btn-primary" onclick="conMod()" id="confirm">Confirm</button></td>
-                        </div>
-                    </div>
-                </div>
-                                </form>
+				<div class="modal fade modal-fade-in-scale-up" tabindex="-1" id="confirm" role="dialog" aria-labelledby="modalLabelfade" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header bg-primary">
+								<h4 class="modal-title" id="modalLabelfade">Confirm</h4>
+							</div>
+							<div class="modal-body" style="font-size: 18px">
+								Please confirm the following:
+								<p id="appmodal">
+									<ul>
+									<li id="1st"></li>
+									<li id="2nd"></li>
+									<li id="3rd"></li>
+									</ul>
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-default" data-dismiss="modal">Close</button>
+								<button class="btn btn-primary" type="submit" >Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+								</form>
                             </div>
                         </div>
                     </div>
@@ -749,11 +743,11 @@
     <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to top" data-toggle="tooltip" data-placement="left">
         <i class="livicon" data-name="plane-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
     </a>
-    <script src="<?php echo base_url(); ?>res/js/appform.js" type="text/javascript"></script>
-    <script src="<?php echo base_url(); ?>res/js/pages/previewpdf.js" type="text/javascript" ></script>
     <!-- global js -->
     <script src="<?php echo base_url(); ?>res/js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>res/js/bootstrap.min.js" type="text/javascript"></script>
+	<!--js -->
+	<script src="<?php echo base_url(); ?>res/js/appform.js" type="text/javascript"></script>
     <!--livicons-->
     <script src="<?php echo base_url(); ?>res/vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>res/vendors/livicons/minified/livicons-1.4.min.js" type="text/javascript"></script>

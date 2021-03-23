@@ -1,3 +1,159 @@
+//VALIDARE FIRST THEN SUBMIT
+
+$("#submit").click(function () {
+	var valid = true,
+		fl = $("#SelectedFile").val().split('\\').pop(),
+		fn = $("#firstname").val(),
+		mn = $("#middlename").val(),
+		ln = $("#lastname").val(),
+		bm = $("#b_month").val(),
+		bd = $("#b_date").val(),
+		by = $("#b_year").val(),
+		ad = $("#address").val(),
+		as = $("#addressState").val(),
+		cn = $("#contactno").val(),
+		gn = $("#gender").val(),
+		cs = $("#civilstatus").val(),
+		rl = $("#religion").val(),
+		ht = $("#height").val(),
+		ca = $("#clientsAssigned").val(),
+		ex = $("#examStatus").val(),
+		ed = $("#educAttain").val(),
+		co = $("#course").val(),
+		we = $("#workexp").val(),
+		sk = $("#skills").val(),
+		dm = $("#da_month").val(),
+		dd = $("#da_date").val(),
+		dy = $("#da_year").val(),
+		pl = $("#pleasing").val(),
+		ast = $("#appStatus").val(),
+		it = $("#interview").val();
+
+	if (fl === "" || fl === " "){
+		$("#fl").addClass("has-error");
+		document.getElementById("fl").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (fn === "" || fn === " "){
+		$("#fn").addClass("has-error");
+		document.getElementById("fn").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ln === "" || ln === " "){
+		$("#ln").addClass("has-error");
+		document.getElementById("ln").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (bm === "" || bm === " " || bd === "" || bd === " " || by === ""|| by === " "){
+		$("#bd").addClass("has-error");
+		document.getElementById("bd").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ad === "" || ad === " "){
+		$("#ad").addClass("has-error");
+		document.getElementById("ad").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (as === "" || as === " "){
+		$("#as").addClass("has-error");
+		document.getElementById("as").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (cn === "" || cn === " "){
+		$("#cn").addClass("has-error");
+		document.getElementById("cn").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (gn === "" || gn === " "){
+		$("#gn").addClass("has-error");
+		document.getElementById("gn").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (cs === "" || cs === " "){
+		$("#cs").addClass("has-error");
+		document.getElementById("cs").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (rl === "" || rl === " "){
+		$("#rl").addClass("has-error");
+		document.getElementById("rl").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ht === "" || ht === " "){
+		$("#ht").addClass("has-error");
+		document.getElementById("ht").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ht === "" || ht === " "){
+		$("#cs").addClass("has-error");
+		document.getElementById("cs").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ca === "" || ca === " "){
+		$("#ca").addClass("has-error");
+		document.getElementById("ca").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ex === "" || ex === " "){
+		$("#ex").addClass("has-error");
+		document.getElementById("ex").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ed === "" || ed === " "){
+		$("#ed").addClass("has-error");
+		document.getElementById("ed").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (co === "" || co === " "){
+		$("#co").addClass("has-error");
+		document.getElementById("co").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (we === "" || we === " "){
+		$("#we").addClass("has-error");
+		document.getElementById("we").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (sk === "" || sk === " "){
+		$("#sk").addClass("has-error");
+		document.getElementById("sk").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (dm === "" || dm === " " || dd === "" || dd === " " || dy === ""|| dy === " "){
+		$("#da").addClass("has-error");
+		document.getElementById("da").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (pl === "" || pl === " "){
+		$("#pl").addClass("has-error");
+		document.getElementById("pl").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (ast === "" || ast === " "){
+		$("#ast").addClass("has-error");
+		document.getElementById("ast").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	if (it === "" || it === " "){
+		$("#it").addClass("has-error");
+		document.getElementById("it").scrollIntoView({ block: 'center',  behavior: 'smooth' });
+		valid = false;
+	}
+	//if everything else is complete, display confirmation modal
+	if (valid === true){
+		$("#1st").html("<strong>First Name: </strong>"+fn);
+		$("#confirm").modal("show");
+		valid = false;
+		return valid;
+	}
+	else
+	{
+		valid = false;
+		return valid;
+	}
+});
+
+
 function setInputFilter(textbox, inputFilter) {
   ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
     textbox.addEventListener(event, function() {
@@ -11,7 +167,7 @@ function setInputFilter(textbox, inputFilter) {
       }
     });
   });
-}
+};
 
 // Integer (both positive and negative)
 /*setInputFilter(document.getElementById("intTextBox"), function(value) {
@@ -22,6 +178,7 @@ setInputFilter(document.getElementById("contactno"), function(value) {
   return /^\d*$/.test(value);
 }); 
 // Integer (positive and <= 255)
+// Set height up to 255
 setInputFilter(document.getElementById("height"), function(value) {
   return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 255);
 }); /*
@@ -38,7 +195,7 @@ setInputFilter(document.getElementById("hexTextBox"), function(value) {
   return /^[0-9a-f]*$/i.test(value);
 }); */
 
-function appValid()
+function appValid() //form validation
 {
 	var valid = true;
 
@@ -226,7 +383,9 @@ function appValid()
 
 	if (valid === true)
 	{
-		document.getElementById("modal-19").className = "md-modal md-effect-1 md-show";
+		/*document.getElementById("modal-19").className = "md-modal md-effect-1 md-show";*/
+		document.getElementById("submit").setAttribute("data-toggle", "#confirm");
+		document.getElementById("submit").setAttribute("data-toggle", "#confirm");
 		valid = false
 		return valid;
 	}
@@ -239,7 +398,7 @@ function appValid()
 
 function closeMod()
 {
-	return document.getElementById("modal-19").className = "md-modal md-effect-1";
+	return document.getElementById("confirm").className = "md-modal md-effect-1";
 }
 
 function conMod()
